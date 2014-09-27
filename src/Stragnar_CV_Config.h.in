@@ -1,0 +1,2 @@
+#define Stragnar_CV_VERSION_MAJOR @Stragnar_CV_VERSION_MAJOR@
+#define Stragnar_CV_VERSION_MINOR @Stragnar_CV_VERSION_MINOR@
