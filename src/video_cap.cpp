@@ -15,7 +15,7 @@ int main(int, char**)
     for(;;)
     {
         Mat frame;
-        cap >> frame; // get a new frame from camera
+        cap >> frame; // get a new frame from camera, 720x1280
         cvtColor(frame, edges, COLOR_BGR2GRAY);
         GaussianBlur(edges, edges, Size(7,7), 1.5, 1.5);
         Canny(edges, edges, 0, 30, 3);

@@ -58,13 +58,20 @@ find_package(OpenCV REQUIRED)
 if (OpenCV_FOUND)
     add_executable(copy_matrix src/copy_matrix)
     add_executable(video_cap src/video_cap)
+    add_executable(3d_recon src/3d_recon)
+    add_executable(calibrate ${Stragnar_CV_BINARY_DIR}/OpenCV/samples/cpp/tutorial_code/calib3d/camera_calibration/camera_calibration) 
 
     add_dependencies(copy_matrix OpenCV)
     add_dependencies(video_cap OpenCV)
+    add_dependencies(3d_recon OpenCV)
+    add_dependencies(calibrate OpenCV)
 
     include_directories(${OpenCV_INCLUDE_DIRS})
 
     target_link_libraries(copy_matrix ${OpenCV_LIBRARIES})
     target_link_libraries(video_cap ${OpenCV_LIBRARIES})
+    target_link_libraries(3d_recon ${OpenCV_LIBRARIES})
+    target_link_libraries(calibrate ${OpenCV_LIBRARIES})
+
 endif (OpenCV_FOUND)
 
