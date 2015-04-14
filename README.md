@@ -1,11 +1,19 @@
-stragnar_cv
+nycopencv
 ===========
 
-You can build the package  by `cd`-ing to the root directory and running
+You should keep your source at 
+```
+/opt/nycopencv/nycopencv
+```
+
+It's a good practice to keep the build separate, so to build the package make a separate directory;
 
 ```
-mkdir build; 
-cd build;
-cmake ..
-make
+/opt/nycopencv/build
+```
+
+You can build the package  by `cd`-ing to there running
+
+```
+cmake /opt/nycopencv/nycopencv; make
 ```
