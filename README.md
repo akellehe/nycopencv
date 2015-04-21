@@ -30,3 +30,25 @@ You can build the package  by `cd`-ing to there and running
 ```
 cmake /opt/nycopencv/nycopencv; make
 ```
+
+If you have a mac
+-----------------
+
+You'll see something along the lines of
+
+
+Get homebrew! http://brew.sh/
+
+Install it and then get cmake
+
+```
+brew install cmake
+```
+
+Once you've installed cmake get the opencv libraries (takes a second)
+
+```
+brew install homebrew/science/opencv
+```
+
+Then you can build normally.
