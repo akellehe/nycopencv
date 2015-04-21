@@ -36,6 +36,13 @@ If you have a mac
 
 You'll see something along the lines of
 
+```
+Cound not find a package configuration file provided by "OpenCV" with any of the following names:
+
+  OpenCVConfig.cmake
+  opencv-config.cmake
+
+```
 
 Get homebrew! http://brew.sh/
 
