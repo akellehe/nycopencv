@@ -62,6 +62,7 @@ if (OpenCV_FOUND)
     add_executable(out_and_in_array src/introduction/out_and_in_array)
     add_executable(saturation_casts src/introduction/saturation_casts)
     add_executable(smart_pointers src/introduction/smart_pointers)
+    add_executable(video_cap2 src/introduction/video_cap2)
 
     add_dependencies(auto_allocation OpenCV)
     add_dependencies(error_handling OpenCV)
@@ -69,6 +70,7 @@ if (OpenCV_FOUND)
     add_dependencies(out_and_in_array OpenCV)
     add_dependencies(saturation_casts OpenCV)
     add_dependencies(smart_pointers OpenCV)
+    add_dependencies(video_cap2 OpenCV)
 
     include_directories(${OpenCV_INCLUDE_DIRS})
 
@@ -78,5 +80,6 @@ if (OpenCV_FOUND)
     target_link_libraries(out_and_in_array ${OpenCV_LIBRARIES})
     target_link_libraries(saturation_casts ${OpenCV_LIBRARIES})
     target_link_libraries(smart_pointers ${OpenCV_LIBRARIES})
+    target_link_libraries(video_cap2 ${OpenCV_LIBRARIES})
 endif (OpenCV_FOUND)
 
