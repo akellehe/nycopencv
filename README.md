@@ -5,7 +5,7 @@ If you just wanna get started type:
 
 ```
 mkdir /opt/nycopencv
-git clone git@github.com:akellehe/nycopencv.git /opt/nycopencv/nycopencv
+git clone https://github.com/akellehe/nycopencv.git /opt/nycopencv/nycopencv
 mkdir /opt/nycopencv/build
 cd /opt/nycopencv/build
 cmake /opt/nycopencv/nycopencv
