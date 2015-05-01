@@ -58,16 +58,16 @@ find_package(OpenCV REQUIRED)
 if (OpenCV_FOUND)
     add_executable(copy_matrix src/copy_matrix)
     add_executable(video_cap src/video_cap)
-    add_executable(terminator src/terminator)
+    add_executable(headshots src/headshots)
 
     add_dependencies(copy_matrix OpenCV)
     add_dependencies(video_cap OpenCV)
-    add_dependencies(terminator OpenCV)
+    add_dependencies(headshots OpenCV)
 
     include_directories(${OpenCV_INCLUDE_DIRS})
 
     target_link_libraries(copy_matrix ${OpenCV_LIBRARIES})
     target_link_libraries(video_cap ${OpenCV_LIBRARIES})
-    target_link_libraries(terminator ${OpenCV_LIBRARIES})
+    target_link_libraries(headshots ${OpenCV_LIBRARIES})
 endif (OpenCV_FOUND)
 
