@@ -59,13 +59,18 @@ if (OpenCV_FOUND)
     add_executable(copy_matrix src/copy_matrix)
     add_executable(video_cap src/video_cap)
     add_executable(video_cap_two src/video_cap_two)
+    add_executable(hough_transform src/hough_transform)
 
     add_dependencies(copy_matrix OpenCV)
+    add_dependencies(video_cap OpenCV)
     add_dependencies(video_cap_two OpenCV)
+    add_dependencies(hough_transform OpenCV)
 
     include_directories(${OpenCV_INCLUDE_DIRS})
 
     target_link_libraries(copy_matrix ${OpenCV_LIBRARIES})
+    target_link_libraries(video_cap ${OpenCV_LIBRARIES})
     target_link_libraries(video_cap_two ${OpenCV_LIBRARIES})
+    target_link_libraries(hough_transform ${OpenCV_LIBRARIES})
 endif (OpenCV_FOUND)
 
