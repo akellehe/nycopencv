@@ -61,12 +61,14 @@ if (OpenCV_FOUND)
     add_executable(video_cap_two src/video_cap_two)
     add_executable(hough_transform src/hough_transform)
     add_executable(video_cap_tree src/video_cap_tree)
+    add_executable(interface_basics src/exercises/interface_basics)
 
     add_dependencies(copy_matrix OpenCV)
     add_dependencies(video_cap OpenCV)
     add_dependencies(video_cap_two OpenCV)
     add_dependencies(hough_transform OpenCV)
     add_dependencies(video_cap_tree OpenCV)
+    add_dependencies(interface_basics OpenCV)
 
     include_directories(${OpenCV_INCLUDE_DIRS})
 
@@ -75,5 +77,6 @@ if (OpenCV_FOUND)
     target_link_libraries(video_cap_two ${OpenCV_LIBRARIES})
     target_link_libraries(hough_transform ${OpenCV_LIBRARIES})
     target_link_libraries(video_cap_tree ${OpenCV_LIBRARIES})
+    target_link_libraries(interface_basics ${OpenCV_LIBRARIES})
 endif (OpenCV_FOUND)
 

@@ -6,7 +6,7 @@
 using namespace cv;
 
 int main(int argc, char** argv) {
-  Mat src, src_gray;
+  Mat src, src_gray, edges;
 
   // Read the image
   src = imread(argv[1], 1);
@@ -21,10 +21,14 @@ int main(int argc, char** argv) {
   // Reduce the noise so we avoid false circle detection
   GaussianBlur(src_gray, src_gray, Size(9, 9), 2, 2);
 
+  // Canny Edge Detector
+  Canny(src_gray, edges, 0, 30, 3);
+
   vector<Vec3f> circles;
 
+  /*
   // Apply the Hough Transform to find the circles
-  HoughCircles(src_gray, circles, CV_HOUGH_GRADIENT, 1, src_gray.rows/8, 200, 100, 0, 0);
+  HoughCircles(edges, circles, CV_HOUGH_GRADIENT, 1, edges.rows/8, 200, 100, 0, 0);
 
   // Draw the circles detected
   for (size_t i=0; i < circles.size(); i++) {
@@ -33,8 +37,14 @@ int main(int argc, char** argv) {
     // circle center
     circle(src, center, 3, Scalar(0, 255, 0), -1, 8, 0);
     // circle outline
-    circle(src, center, radius, Scalar(0, 0, 255), 3, 8, 0);
+    circle(src, center, radius, Scalar(0, 0, 255), 20, 8, 0);
   }
+
+  if (circles.size() <= 0) {
+    std::cout << "No circles detected.\n";
+  }
+
+  */
 
   // Show your results
   namedWindow("Hough Circle Transform Demo", CV_WINDOW_AUTOSIZE);
