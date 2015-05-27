@@ -21,8 +21,8 @@ endif()
 
 # Configure a header to pass some CMake settings to the source.
 configure_file (
-    "${Stragnar_CV_SOURCE_DIR}/src/Stragnar_CV_Config.h.in"
-    "${Stragnar_CV_BINARY_DIR}/src/Stragnar_CV_Config.h"
+    "${Stragnar_CV_SOURCE_DIR}/examples/cpp/Stragnar_CV_Config.h.in"
+    "${Stragnar_CV_BINARY_DIR}/examples/cpp/Stragnar_CV_Config.h"
 )
 
 # Add the binary directory to the search include path to find 
@@ -31,7 +31,7 @@ include_directories("${Stragnar_CV_BINARY_DIR}")
 include_directories("${Stragnar_CV_SOURCE_DIR}")
 
 # Add the 'hello world' executable
-add_executable(hello_world src/hello_world)
+add_executable(hello_world examples/cpp/hello_world)
 
 # Get opencv
 message( "External project - OpenCV" )
@@ -46,7 +46,7 @@ ExternalProject_Add(OpenCV
     ${ep_common_args}
     -DBUILD_DOCS:BOOL=OFF
     -DBUILD_EXAMPLES:BOOL=OFF
-    -DBUILD_NEW_PYTHON_SUPPORT:BOOL=OFF
+    -DBUILD_NEW_PYTHON_SUPPORT:BOOL=ON
     -DBUILD_PACKAGE:BOOL=ON
     -DBUILD_SHARED_LIBS:BOOL=ON
     -DBUILD_TESTS:BOOL=OFF
@@ -54,17 +54,19 @@ ExternalProject_Add(OpenCV
     -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}/INSTALL
 )
 
-find_package(OpenCV REQUIRED)
 if (OpenCV_FOUND)
-    add_executable(copy_matrix src/copy_matrix)
-    add_executable(video_cap src/video_cap)
+    add_executable(copy_matrix examples/cpp/copy_matrix)
+    add_executable(video_cap examples/cpp/video_cap)
+    add_executable(headshots examples/cpp/headshots)
 
     add_dependencies(copy_matrix OpenCV)
     add_dependencies(video_cap OpenCV)
+    add_dependencies(headshots OpenCV)
 
     include_directories(${OpenCV_INCLUDE_DIRS})
 
     target_link_libraries(copy_matrix ${OpenCV_LIBRARIES})
     target_link_libraries(video_cap ${OpenCV_LIBRARIES})
+    target_link_libraries(headshots ${OpenCV_LIBRARIES})
 endif (OpenCV_FOUND)
 
