@@ -5,8 +5,6 @@ project(Stragnar_CV)
 include(ExternalProject)
 include(CheckCXXCompilerFlag)
 
-message(${OpenCV_DIR})
-
 # Set the version number
 set (Stragnar_CV_VERSION_MAJOR 0)
 set (Stragnar_CV_VERSION_MINOR 1)
