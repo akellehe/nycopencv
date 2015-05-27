@@ -13,17 +13,6 @@
 using namespace cv;
 using namespace std;
 
-static void redify(const Mat frame, Mat red) {
-	Vec3b pixel;
-	for (int i = 0; i < frame.rows; ++i) {
-		for (int j = 0; j < frame.cols; ++j) {
-			pixel = frame.at<Vec3b>(i,j);
-			pixel[0] = 0; // set Blue and Green to 0.
-			pixel[1] = 0;
-			red.at<Vec3b>(i,j) = pixel;
-		}
-	}
-}
 
 static void grabHeadShot(vector<Rect>::iterator i, Mat red) {
     try {
@@ -50,6 +39,8 @@ static void grabHeadShot(vector<Rect>::iterator i, Mat red) {
         // ROI was out of view. Just pass, it prevents clipping.
     }
 }
+
+vector<std::tuple<Point, std::string>> latest_whereabouts(); 
 
 static void paintfaces(CascadeClassifier& haar_faces, CascadeClassifier& haar_leyes, CascadeClassifier& haar_reyes, const Mat frame, Mat red) {
     vector<Rect> faces;
@@ -89,14 +80,13 @@ int main(int, char**)
     haar_reye.load("/opt/nycopencv/build/INSTALL/share/OpenCV/haarcascades/haarcascade_righteye_2splits.xml");
     Mat frame;
     Mat red;
-    namedWindow("terminator",1);
+    namedWindow("headshots",1);
     for(;;)
     {
         cap >> frame; // get a new frame from camera
 	red = frame.clone();
-	// redify(frame, red);
 	paintfaces(haar_faces, haar_leye, haar_reye, frame, red);
-        imshow("terminator", red);
+        imshow("headshots", red);
         if(waitKey(30) >= 0) break;
     }
     // the camera will be deinitialized automatically in VideoCapture destructor
